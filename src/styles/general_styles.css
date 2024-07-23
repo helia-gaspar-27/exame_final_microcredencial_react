@@ -1,0 +1,154 @@
+:root {
+    --darkGreen: #4F6F52;
+    --darkishGreen: #739072;
+    --green: #86A789;
+    --veryLightGreen: #D2E3C8;
+}
+.headerPage {
+	background-color: var(--darkGreen);
+	color: var(--veryLightGreen);
+	min-width: 100%;
+	text-align: center;
+}
+
+.headerPage h3, .list {
+    margin: 0;
+    padding: 1em;
+}
+
+body {
+    background-color: var(--darkishGreen);
+}
+
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.box .row {
+    border: 1px dotted grey;
+}
+
+.box {
+    flex: 0 1 auto;
+}
+
+.personDetails {
+	margin-left: 1em;
+	display: flex;
+	flex-direction: column;
+    width: 50%;
+}
+
+.disFlex, .aliUserIcon {
+	display: flex;
+	align-items: center;
+}
+
+.disFlex {
+	max-width: 40em;
+	padding-top: 1.2em;
+}
+
+.aliUserIcon {
+    width: 40em;
+	height: 3.6em;
+}
+
+.list {
+	list-style-type: none;
+	display: block;
+    margin: auto;
+	padding: 1em;
+	background-color: var(--darkishGreen);
+	color: var(--veryLightGreen);
+	max-width: 40em;
+}
+
+.dFlex {
+	display: flex;
+}
+
+.fDir {
+    flex-direction: column;
+}
+
+.spBetween {
+    justify-content: space-between;
+}
+
+.alItems {
+    align-items: center;
+}
+
+.w100Mar {
+    width: 100%;
+    margin-left: 0.6em;
+}
+
+.lineStyle {
+    color : var(--veryLightGreen);
+    opacity: 0.5;
+}
+
+.contactInfo {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.contactInfo svg {
+    margin-right: 0.3em;
+}
+
+.namePerson {
+    font-weight: 600;
+    font-size: larger;
+}
+
+.personInfo {
+    height: 3.7em;
+    margin-bottom: 1em;
+}
+
+.disFlex:hover {
+    background-color: var(--green);
+
+}
+
+.pRight {
+    padding-right: 1em;
+}
+
+.aliUserIcon:first-child {
+    padding-left: 1em;
+}
+
+.svgIcon {
+	display: flex;
+	align-self: baseline;
+}
+
+.resetSpan {
+    margin:0; 
+    padding:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.25s;
+    padding: 0.25em;
+    border-radius: 50%;
+    height: 1.4em;
+    width: 1.4em;
+}
+
+.resetSpan:hover {
+    background-color: var(--darkishGreen);
+    cursor: pointer;
+}
+
+.arIcons {
+    flex-direction: row;
+    display: flex;
+}
