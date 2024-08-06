@@ -152,3 +152,168 @@ body {
     flex-direction: row;
     display: flex;
 }
+
+.btnDiv {
+	display: flex;
+	justify-content: end;
+	height: 5em;
+	align-items: center;
+	padding-right: 6em;
+}
+
+.addPeopleBtn {
+    height: 2.4em;
+    background-color: var(--veryLightGreen);
+    color: var(--darkGreen);
+}
+
+.addPeopleBtn:hover {
+    background-color: #BAD4AA;
+    transition: background-color 0.25s;
+}
+
+/*__Forms__*/
+.groupForm {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-around;
+	margin-top: 30px;
+	border: 1px solid whitesmoke;
+	padding: 21px;
+	border-radius: 4px;
+    position: absolute;
+    visibility: hidden;
+}
+
+.inpBox {
+	margin-bottom: 1.5rem;
+	position: relative;
+	width: 20.437rem;
+}
+
+.inpUnderlined > input,
+.inpUnderlined > select{
+    border: none;
+    border-bottom: 0.125rem solid gray;
+    width: 100%;
+    height: 2em;
+    font-size: 1.0625rem;
+    padding-left: 0.875rem;
+    line-height: 147.6%;
+    padding-top: 0.825rem;
+    padding-bottom: 0.5rem;
+}
+
+.inpUnderlined > input:focus,
+.inpUnderlined > select:focus {
+    outline: none;
+}
+
+.inpUnderlined > .inpLabel{
+    position: absolute;
+    top: 0.9375rem;
+    left: 0.875rem;
+    line-height: 147.6%;
+    color: var(--darkGreen);
+    transition: top .2s;
+}
+
+.inpUnderlined > .inpLabel{
+    font-size: 0.9375rem;
+    color: var(--darkishGreen);
+    letter-spacing: 0.0275rem;
+    margin: 0.125rem 0.875rem;
+}
+
+.inpUnderlined > input:hover,
+.inpUnderlined > select:hover{
+    background: var(--veryLightGreen);
+    border-color: var(--darkishGreen);
+}
+
+.inpUnderlined > input:focus +
+.inpLabel,
+.inpUnderlined > input:valid +
+.inpLabel,
+.inpUnderlined > select:focus +
+.inpLabel,
+.inpUnderlined > select:valid +
+.inpLabel{
+    top:0;
+    font-size: 0.9375rem;
+    margin-bottom: 32px;
+}
+
+.inpUnderlined > input:focus +
+.inpLabel,
+.inpUnderlined > select:focus +
+.inpLabel{
+    color: var(--darkGreen);
+}
+
+.inpUnderlined > input:focus,
+.inpUnderlined > select:focus{
+    border-color: var(--darkGreen);
+}
+
+.inpUnderlined > select {
+	height: 3.2em;
+	background-color: #FFF;
+    width: 105%;
+}
+
+.groupForm {
+    position: 'absolute';
+    visibility: 'hidden';
+    margin-top: 30px;
+}
+
+.aniFormDown {
+    animation-duration: 0.15s;
+    animation-name: animateForm;
+    animation-fill-mode: revert;
+    &.aniFormDown{
+        position: initial;
+        visibility: visible;
+    }
+}
+
+@keyframes animateForm {
+    0%{
+        transform: translateY(0vh);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(1vh);
+        opacity: 1;
+    }
+}
+
+#root {
+    background-color: var(--darkishGreen);
+    display: flex;
+    flex-direction: column;
+}
+
+#root .box {
+    flex-grow: 1;
+}
+
+.aniFormUp {
+    animation-name: animateFormUp;
+    &.aniFormUp{
+        position: absolute;
+        visibility: hidden;
+    }
+}
+
+@keyframes animateFormUp {
+    0%{
+        transform: translateY(1vh);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(0vh);
+        opacity: 0;
+    }
+}

@@ -1,7 +1,8 @@
 import { FaCircleUser , FaPhone , FaRegTrashCan, FaPencil } from "react-icons/fa6"
 import { IconContext } from "react-icons"
+import { useState } from "react"
 
-function PersonItem() {
+function PersonItem({pepDetails}) {
 
     return (
             <li className="personInfo">
@@ -11,19 +12,19 @@ function PersonItem() {
                         <span className="w100Mar">
                             <span id="personDetails" className="dFlex spBetween alItems">
                                 <span className="dFlex fDir">
-                                    <span className="namePerson">Pessoa 1</span>
-                                    <span>24 anos</span>
+                                    <span className="namePerson">{pepDetails.pnome}</span>
+                                    <span>{pepDetails.pusername} (id: {pepDetails.pid})</span>
                                 </span>
                                 <span className="dFlex fDir">
                                     <span className="contactInfo">
                                         <IconContext.Provider value={{size: "0.7em"}}><FaPhone/></IconContext.Provider>
-                                        911 222 333
+                                        {pepDetails.ptlf}
                                     </span>
-                                    <span>Feminino</span>
+                                    <span>{ (pepDetails.pgn).toUpperCase() == 'F' ? 'Feminino' : 'Masculino'}</span>
                                 </span>
                                 <span className="pRight">
                                     <span className="arIcons">
-                                        <span className="resetSpan"><FaPencil/></span>
+                                        <span className="resetSpan" onClick={() => pepDetails.handleDataFromChild(pepDetails.pid)}><FaPencil/></span>
                                         <span className="resetSpan"><FaRegTrashCan/></span>
                                     </span>
                                 </span>
