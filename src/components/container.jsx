@@ -11,6 +11,7 @@ function ContainerBody() {
     const [dbTemp, updateDB] = useState([...dPep])
 
     let [arrow, changeArrowDirection] = useState('down')
+    let [msg, changeBtnMsg] = useState('ADICONAR NOVA PESSOA')
     let btnClasses = (arrow == 'down' ? 'groupForm ' : 'groupForm aniFormDown')
 
     const contBody = document.getElementById('bodyContainer')
@@ -18,21 +19,31 @@ function ContainerBody() {
         if (!editForm) {
             updateDB(
                 [...dbTemp, {
-                    id: (dbTemp.length + 1),
+                    id: `${new Date().getTime()}`,
                     nome: statusCase.fnome,
                     username: statusCase.username,
-                    gn: (statusCase.genero == 'fem' ? 'f' : 'm'),
+                    gn: ((statusCase.genero).toUpperCase() == 'F' ? 'F' : 'M'),
                     tlf: '351' + statusCase.numTel
                 }]
             )
             changeArrowDirection('down')
+            setForm({
+                fnome: '',
+                fnomeMessage: '',
+                username: '',
+                usernameMessage: '',
+                numTel: '',
+                numTelMessage: '',
+                genero: 'F',
+                generoMessage: '',
+                inpId: '',
+            })
         }
 
     }
 
     const updateState = (userToUpdate) => {
         const newSate = dbTemp.map(obj => {
-            console.log('no updateState')
             if (obj.id == userToUpdate.inpId) {
                 return {
                     ...obj,
@@ -50,11 +61,22 @@ function ContainerBody() {
             return false
         }
         checkIfEdit(editMode)
+        changeBtnMsg('ADICONAR NOVA PESSOA')
         changeArrowDirection('down')
+        setForm({
+            fnome: '',
+            fnomeMessage: '',
+            username: '',
+            usernameMessage: '',
+            numTel: '',
+            numTelMessage: '',
+            genero: 'F',
+            generoMessage: '',
+            inpId: '',
+        })
 
     }
 
-    /*Edicao do utilizador*/
     const [editForm, checkIfEdit] = useState(false)
     const [formInp, setForm] = useState({
         fnome: '',
@@ -69,8 +91,7 @@ function ContainerBody() {
     })
 
     const updateUserDetails = (userDetails) => {
-        dbTemp.map(x => {
-            //console.log(x)
+        const cenas = () => dbTemp.map(x => {
             if (x.id == userDetails) {
                 setForm({
                     ...formInp,
@@ -80,10 +101,22 @@ function ContainerBody() {
                     numTel: (x.tlf).substring(3),
                     genero: (x.gn).toUpperCase(),
                 })
-                checkIfEdit(true)
+                changeBtnMsg('EDITAR PESSOA')
                 changeArrowDirection('up')
+                return true
             }
         })
+        checkIfEdit(cenas)
+    }
+
+    const removeUser = (e) => {
+        const idUser = e.target.getAttribute('iduser')
+        updateDB(current =>
+            current.filter(user => {
+                return user.id != idUser
+            })
+        )
+
     }
 
     if (arrow == 'down') {
@@ -99,7 +132,7 @@ function ContainerBody() {
             <div className="btnDiv">
                 <BasicButton btnDetails={
                     {
-                        btnDesc: 'ADICIONAR NOVA PESSOA',
+                        btnDesc: msg,
                         classDesc: 'addPeopleBtn',
                         iconType: arrow,
                         showIcon: true
@@ -112,11 +145,10 @@ function ContainerBody() {
                 <GroupForm funcDoPai={funcDoPai} updateUser={updateState} setForm={setForm} formInp={formInp} editForm={editForm} />
             </div>
             <div className="">
-                <ListItems newPep={dbTemp} updateUserDetails={updateUserDetails} />
+                <ListItems newPep={dbTemp} updateUserDetails={updateUserDetails} removeUserFromList={removeUser} />
             </div>
         </div>
 
     )
 }
-//funcDoPai={funcDoPai}
 export default ContainerBody

@@ -9,25 +9,9 @@ function GroupForm(props) {
     const latinRegExp = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžæÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
     const numbRegExp = /^\d+$/
 
-    /*const [formInp, setForm] = useState({
-        fnome:'',
-        fnomeMessage: '',
-        username:'',
-        usernameMessage:'',
-        numTel:'',
-        numTelMessage:'',
-        genero:'fem',
-        generoMessage:'',
-        
-    })*/
-    /*
-    pessoaId:'',
-        pessoaIdMessage:''
-    */
     let [addPep, verifyForm] = useState('')
 
     const verifyEmptyForm = (frm) => {
-        console.log(Object.values(frm))
         const val = Object.values(frm)
         for (let i = 0; i < (val.length - 1); i++) {
             if( (i%2=== 0 && val[i].length === 0) ||
@@ -40,8 +24,6 @@ function GroupForm(props) {
         return verifyForm(addPep = true)
 
     }
-
-    console.log(props.formInp.genero)
 
     const alertMsg = <p><FaCircleExclamation/> Por favor preencha todos os campos do formulário correctamente.</p>
 
