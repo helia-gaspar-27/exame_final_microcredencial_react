@@ -9,4 +9,6 @@ Currently, two official plugins are available:
 
 
 To run the project: npm run dev
+
+
 This package was added: https://react-icons.github.io/react-icons/
